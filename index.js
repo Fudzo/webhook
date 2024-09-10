@@ -14,6 +14,10 @@ app.post('/viber-webhook', (req, res) => {
     res.status(200).send();
 });
 
+app.get('/heartbeat', (req, res) => {
+    res.json({ works: true })
+})
+
 const setViberWebhook = async () => {
     try {
         const response = await axios.post('https://chatapi.viber.com/pa/set_webhook', {
