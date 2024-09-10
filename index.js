@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5555;
 app.use(express.json());
 
 
-app.post('/viber-webhook', (req, res) => {
+app.post('/megawebhook', (req, res) => {
     const event = req.body;
     console.log('Received event:', event);
     res.status(200).send();
@@ -22,7 +22,7 @@ const setViberWebhook = async () => {
     try {
         const response = await axios.post('https://chatapi.viber.com/pa/set_webhook', {
             url: process.env.WEBHOOK_URL,  // Replace with your public URL
-            auth_token: VIBER_BOT_TOKEN
+            auth_token: process.env.VIBER_BOT_TOKEN
         });
         console.log('Webhook set:', response.data);
     } catch (error) {
