@@ -18,19 +18,7 @@ app.get('/heartbeat', (req, res) => {
     res.json({ works: true })
 })
 
-const setViberWebhook = async () => {
-    try {
-        const response = await axios.post('https://chatapi.viber.com/pa/set_webhook', {
-            url: process.env.WEBHOOK_URL,  // Replace with your public URL
-            auth_token: process.env.VIBER_BOT_TOKEN
-        });
-        console.log('Webhook set:', response.data);
-    } catch (error) {
-        console.error('Error setting webhook:', error);
-    }
-};
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-    // setViberWebhook();
 });
